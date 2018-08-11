@@ -163,6 +163,26 @@ For example, if you have a chandelier with three bulbs, you might want to expose
 }
 ```
 
+
+Use the `sensorDuration` property to define fake duration for Philips Hue Motion sensors based on the time of the day. The key of this dictionary is the ID of the sensor (as provided by the bridge; you can find this value in the `resource` property of each sensor), the value is another dictionary with the time of the day and the duration of the sensor in seconds.
+In this example, the sensor with the ID 42 has a duration of 60 seconds from 00:00:00 to 00:06:00 and a duration of 500 seconds the rest of the day.
+```json
+"platforms": [
+    {
+      "platform": "Hue",
+      ...
+      "sensors": true,
+      ...
+      "sensorDuration": {
+        "42": {
+          "00:00:00": 60,
+          "00:06:00": 500
+        }
+      }
+    }
+  ]
+```
+
 ### Troubleshooting
 
 #### Run homebridge-hue Solo
